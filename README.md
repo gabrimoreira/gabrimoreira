@@ -19,5 +19,6 @@ I'm a computer engineering student at UFC, passionate about technology and innov
 </div>          
 <hr>
 
+![Gabriel's GitHub stats](https://github-readme-stats.vercel.app/api?username=gabrimoreira\&rank_icon=github)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gabrimoreira&layout=donut)](https://github.com/gabrimoreira/github-readme-stats)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gabrimoreira&layout=compact)
+
