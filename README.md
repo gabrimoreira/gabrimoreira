@@ -14,45 +14,49 @@
   <a href="mailto:gabrieldevandrade49@gmail.com"><img alt="Email: gabrieldevandrade49@gmail.com" src="https://img.shields.io/badge/Email-gabrieldevandrade49%40gmail.com-b8236e?style=flat-square&labelColor=1b2a41"></a>
 </p>
 
+## My contributions as a Game of Life
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/life-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/life-light.svg">
+  <img alt="Conway's Game of Life played on my GitHub contribution graph" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/life-light.svg" width="100%">
+</picture>
+
+My real contribution graph is the starting point of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). Updated daily.
+
 ## About
 
-I'm a Computer Engineering undergraduate at the Federal University of Ceará (UFC), Brazil, in my 10th semester, and a software development intern at Raposo Plástico, where I build FlowPilot, the company's internal platform for managing tasks and routines.
-
-Most of my work is full-stack TypeScript: Vue or React on the front end, NestJS or Express on the back end, PostgreSQL for data. Lately my own projects are browser games and simulators that run entirely on the device, with no backend. I also spent over a year in undergraduate research on quantum circuit simulation.
+Full-stack TypeScript developer and Computer Engineering student at UFC, Brazil. I build internal tools at Raposo Plástico, and browser games and simulators on my own time.
 
 ## Experience
 
-**Software Development Intern, Raposo Plástico** · 2026 to present\
-Digital transformation of a plastics recycling company. I build FlowPilot end to end with Vue 3, Tailwind CSS, NestJS, TypeORM and PostgreSQL, deploy on Railway with the database on DigitalOcean, and plan the schema migrations.
+- **Software Development Intern, Raposo Plástico** · 2026 to present\
+  FlowPilot, an internal platform for tasks and routines. Vue 3, NestJS, PostgreSQL.
+- **Undergraduate Research Fellow, UFC** · Sep 2024 to Nov 2025\
+  Quantum circuit simulation. Python, NumPy.
+- **Full Stack Developer and Project Manager, GTI Junior Enterprise** · 2024\
+  React and Node.js apps, Scrum lead.
 
-**Undergraduate Research Fellow, Federal University of Ceará** · Sep 2024 to Nov 2025\
-Scripts for quantum circuit simulation and data processing with Python and NumPy, in an academic team working on mathematical and algorithmic problems.
+## Projects
 
-**Full Stack Developer and Project Manager, GTI Junior Enterprise** · Jan to Dec 2024\
-Built React and Tailwind interfaces from Figma prototypes and REST APIs with Node.js and Express. As manager, I ran the Scrum ceremonies and kept versioning and delivery on track.
+| Project | What it is | Try it |
+| --- | --- | --- |
+| [**Capital**](https://github.com/gabrimoreira/business_simulator) | Life and business simulator, from age 18 to 65. `Vue 3` `PWA` | [Play](https://businesssimulator.vercel.app) |
+| [**Casa Sandbox**](https://github.com/gabrimoreira/threejs_house) | 3D home decoration game. `three.js` | [Play](https://threejshouse-two.vercel.app) |
+| [**Vida**](https://github.com/gabrimoreira/life-simulator) | Life simulator that works offline, one turn per year. `Vue` `PWA` | [Play](https://life-simulator-133.pages.dev) |
+| [**Document OCR AI**](https://github.com/gabrimoreira/document-ocr-ai) | Extracts amounts and dates from invoices with Gemini. `Next.js` `NestJS` | [Demo](https://document-ocr-ai.vercel.app) |
+| [**Helpdesk**](https://github.com/gabrimoreira/helpdesk) | Multi-tenant ticketing system. `Vue 3` `NestJS` `PostgreSQL` | |
+| [**EventFlow**](https://github.com/gabrimoreira/events-backend) *(in progress)* | Ticketing backend, with microservices for AWS. `Node.js` `Docker` | |
+| [**Brazil in data**](https://github.com/kelvinleandro/censo-dataviz-react) *(team)* | Scrollytelling on the 2022 Census. `Next.js` `D3.js` | [Demo](https://censo-2022-dataviz.vercel.app/) |
+| [**Lung segmentation**](https://github.com/gabrimoreira/lung-segmentation-web) *(team)* | Segment and edit CT scans in the browser. `React` `DICOM` | [Demo](https://lung-segmentation-web.vercel.app) |
 
-## Featured projects
-
-| Project | What it is |
-| --- | --- |
-| **Capital**<br>[Play](https://businesssimulator.vercel.app) · [Code](https://github.com/gabrimoreira/business_simulator) | Life and business simulator. Start at 18 with R$ 600 and play until 65: work, study, invest and found companies. A headless runner plays decades in seconds to balance the economy.<br>`Vue 3` `TypeScript` `Pinia` `Tailwind CSS` `IndexedDB` `PWA` |
-| **Casa Sandbox**<br>[Play](https://threejshouse-two.vercel.app) · [Code](https://github.com/gabrimoreira/threejs_house) | 3D home decoration game in the browser. The house is generated from JSON; place and swap low-poly furniture, paint walls and walk around in first person.<br>`three.js` `TypeScript` `Vite` |
-| **Vida**<br>[Play](https://life-simulator-133.pages.dev) · [Code](https://github.com/gabrimoreira/life-simulator) | Turn-based life simulator where one turn is one year. Installable and works in airplane mode, with a pure, testable engine kept separate from its content.<br>`Vue` `Pinia` `TypeScript` `PWA` |
-| **Document OCR AI**<br>[Demo](https://document-ocr-ai.vercel.app) · [Code](https://github.com/gabrimoreira/document-ocr-ai) | Document platform that uses Google Gemini to extract amounts, dates and summaries from invoices and receipts, with per-user data isolation.<br>`Next.js` `NestJS` `Prisma` `Supabase` `Gemini` |
-| **Helpdesk**<br>[Code](https://github.com/gabrimoreira/helpdesk) | Multi-tenant ticketing system that routes requests by department, with JWT authentication, role-based access and JSON-driven dynamic forms.<br>`Vue 3` `PrimeVue` `NestJS` `TypeORM` `PostgreSQL` `Docker` |
-| **EventFlow** *(in progress)*<br>[Code](https://github.com/gabrimoreira/events-backend) | Backend for an event ticketing platform, for a cloud development course at UFC: Node.js microservices targeting AWS (EC2 with Auto Scaling, RDS, S3, ElastiCache, DynamoDB, SNS/SQS). The services, gateway and queues are set up; the API routes are still being implemented.<br>`Node.js` `TypeScript` `Docker` `AWS` |
-| **Brazil in data: 2022 Census** *(team project)*<br>[Demo](https://censo-2022-dataviz.vercel.app/) · [Code](https://github.com/kelvinleandro/censo-dataviz-react) | Scrollytelling piece on Brazil's demographic transition, with interactive choropleth maps and charts.<br>`Next.js` `D3.js` `TypeScript` `PostgreSQL` |
-| **Lung segmentation** *(team project)*<br>[Demo](https://lung-segmentation-web.vercel.app) · [Code](https://github.com/gabrimoreira/lung-segmentation-web) | Web interface for CT scans: upload DICOM files, run segmentation algorithms, edit contours by hand and export the results.<br>`React` `TypeScript` `shadcn/ui` `DICOM` |
-
-More: [interactive D3.js and Vega-Lite notebooks](https://observablehq.com/collection/@gabriel-moreira-de-andrade/interactive-visualizations) on Observable.
+More: [D3.js notebooks](https://observablehq.com/collection/@gabriel-moreira-de-andrade/interactive-visualizations)
 
 ## Research
 
-**Proposta de um Somador Completo Quântico Fotônico** *(Proposal of a photonic quantum full adder)*, 2025\
-Orleans C. V. Cardoso, **Gabriel M. de Andrade** and João Batista R. Silva. 8th Workshop-School on Quantum Computation and Information (WECIQ), UFSC, Florianópolis.\
-A quantum full adder in a photonic architecture built on coherent states and linear optics, extending the QPU X platform to reversible arithmetic. [Read the PDF, in Portuguese](https://codewithgabriel.com/docs/artigo-qfa.pdf).
+[Proposal of a photonic quantum full adder](https://codewithgabriel.com/docs/artigo-qfa.pdf) (PDF, in Portuguese), co-author. WECIQ 2025.
 
-Coursework reports: [Applied Computational Intelligence](https://github.com/gabrimoreira/university-docs/tree/main/ica) · [Software Verification & Validation](https://github.com/gabrimoreira/university-docs/tree/main/v%26v)
+Coursework: [Computational Intelligence](https://github.com/gabrimoreira/university-docs/tree/main/ica) · [Software Verification & Validation](https://github.com/gabrimoreira/university-docs/tree/main/v%26v)
 
 ## Stack
 
@@ -94,8 +98,6 @@ Coursework reports: [Applied Computational Intelligence](https://github.com/gabr
 </p>
 
 ## Latest commits
-
-The most recent commit from each of my most active public repositories, updated automatically.
 
 <!-- recent-commits:start -->
 | Repository | Commit | Date |
