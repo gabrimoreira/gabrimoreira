@@ -1,0 +1,175 @@
+name: Profile
+
+# Generates every data-driven image in the README and publishes them to the `output`
+# branch, so the page never depends on a third-party server being up when it is viewed.
+# A generator that fails keeps its last good image, and the run is marked as failed at
+# the end, after everything that did work has been published.
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # 03:17 in Fortaleza
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Optional secret: add a personal access token named STATS_TOKEN to count private work.
+      STATS_TOKEN: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Restore the last published images
+        run: |
+          mkdir -p dist
+          if git fetch --depth=1 origin +refs/heads/output:refs/remotes/origin/output; then
+            git archive refs/remotes/origin/output | tar -x -C dist
+          else
+            echo "No output branch yet, starting empty."
+          fi
+
+      - name: Generate snake
+        id: snake
+        continue-on-error: true
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ env.STATS_TOKEN }}
+          outputs: |
+            dist/snake-light.svg?color_snake=#1b2a41&color_dots=#e8ecea,#f2c5dc,#e58ebb,#cf5596,#b8236e
+            dist/snake-dark.svg?color_snake=#8cc8eb&color_dots=#1b2a41,#4a2f5a,#7f3a78,#b8458f,#f05aa6
+
+      - name: Generate stats card (light)
+        id: stats_light
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: stats
+          options: show_icons=true&include_all_commits=true&custom_title=GitHub%20stats&border_radius=8&bg_color=f4f6f3&border_color=d5dcda&title_color=b8236e&icon_color=1b2a41&text_color=1b2a41&ring_color=b8236e
+          path: dist/stats-light.svg
+          token: ${{ env.STATS_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Generate stats card (dark)
+        id: stats_dark
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: stats
+          options: show_icons=true&include_all_commits=true&custom_title=GitHub%20stats&border_radius=8&bg_color=14243a&border_color=2a3d57&title_color=f05aa6&icon_color=8cc8eb&text_color=e4ecef&ring_color=f05aa6
+          path: dist/stats-dark.svg
+          token: ${{ env.STATS_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Generate languages card (light)
+        id: langs_light
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: top-langs
+          options: layout=compact&langs_count=6&card_width=495&custom_title=Most%20used%20languages&border_radius=8&bg_color=f4f6f3&border_color=d5dcda&title_color=b8236e&text_color=1b2a41
+          path: dist/langs-light.svg
+          token: ${{ env.STATS_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Generate languages card (dark)
+        id: langs_dark
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: top-langs
+          options: layout=compact&langs_count=6&card_width=495&custom_title=Most%20used%20languages&border_radius=8&bg_color=14243a&border_color=2a3d57&title_color=f05aa6&text_color=e4ecef
+          path: dist/langs-dark.svg
+          token: ${{ env.STATS_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Fetch streak cards
+        id: streak
+        continue-on-error: true
+        env:
+          BASE: https://streak-stats.demolab.com/?user=${{ github.repository_owner }}&border_radius=8&date_format=M%20j%5B%2C%20Y%5D
+          LIGHT: background=F4F6F3&border=D5DCDA&stroke=D5DCDA&ring=B8236E&fire=B8236E&currStreakNum=1B2A41&sideNums=1B2A41&currStreakLabel=B8236E&sideLabels=4B5D64&dates=4B5D64
+          DARK: background=14243A&border=2A3D57&stroke=2A3D57&ring=F05AA6&fire=F05AA6&currStreakNum=E4ECEF&sideNums=E4ECEF&currStreakLabel=F05AA6&sideLabels=9FB2BD&dates=9FB2BD
+        run: |
+          bash .github/scripts/fetch_card.sh "$BASE&$LIGHT" dist/streak-light.svg "Total Contributions"
+          bash .github/scripts/fetch_card.sh "$BASE&$DARK" dist/streak-dark.svg "Total Contributions"
+
+      - name: Fetch contribution charts
+        id: contributions
+        continue-on-error: true
+        env:
+          BASE: https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${{ github.repository_owner }}
+          # The service has no custom colors and truncates the title, so both are rewritten here.
+          # If its markup changes, these rules simply stop matching and the card goes off-palette.
+          TITLE: s/>[^<]*\(Gabrie[^<]*</>Contribution activity</
+          LIGHT: s/#0366d6/#b8236e/g;s/#40c463/#b8236e/g;s/#ffffff/#f4f6f3/g;s/#e4e2e2/#d5dcda/g;s/#586069/#4b5d64/g
+          DARK: s/#0366d6/#f05aa6/g;s/#40c463/#f05aa6/g;s/#0d1117/#14243a/g;s/#2e343b/#2a3d57/g;s/#8b949e/#9fb2bd/g;s/#77909c/#9fb2bd/g
+        run: |
+          bash .github/scripts/fetch_card.sh "$BASE&theme=github" dist/contributions-light.svg "contributions in the last year" "$TITLE;$LIGHT"
+          bash .github/scripts/fetch_card.sh "$BASE&theme=github_dark" dist/contributions-dark.svg "contributions in the last year" "$TITLE;$DARK"
+
+      - name: Publish images to the output branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          export GIT_INDEX_FILE="$RUNNER_TEMP/output-index"
+          git --git-dir="$PWD/.git" --work-tree="$PWD/dist" add --all
+          tree=$(git --git-dir="$PWD/.git" write-tree)
+          if [ "$tree" = "$(git rev-parse -q --verify 'refs/remotes/origin/output^{tree}' || true)" ]; then
+            echo "Images unchanged, nothing to publish."
+            exit 0
+          fi
+          # A single parentless commit, so daily images never pile up in the history.
+          commit=$(git commit-tree "$tree" -m "Update profile images")
+          git push --force origin "$commit:refs/heads/output"
+
+      - name: Update the latest commits table
+        id: commits
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: python3 .github/scripts/recent_commits.py
+
+      - name: Commit the README if it changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README unchanged."
+            exit 0
+          fi
+          git add README.md
+          git commit -m "docs: update latest commits"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Fail the run if anything is stale
+        env:
+          OUTCOMES: >-
+            snake=${{ steps.snake.outcome }}
+            stats_light=${{ steps.stats_light.outcome }}
+            stats_dark=${{ steps.stats_dark.outcome }}
+            langs_light=${{ steps.langs_light.outcome }}
+            langs_dark=${{ steps.langs_dark.outcome }}
+            streak=${{ steps.streak.outcome }}
+            contributions=${{ steps.contributions.outcome }}
+            commits=${{ steps.commits.outcome }}
+        run: |
+          status=0
+          for outcome in $OUTCOMES; do
+            echo "$outcome"
+            case "$outcome" in
+              *=success) ;;
+              *) echo "::error::${outcome%%=*} failed, its last good version was kept"; status=1 ;;
+            esac
+          done
+          exit "$status"
