@@ -71,12 +71,12 @@ Coursework reports: [Applied Computational Intelligence](https://github.com/gabr
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/stats-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/stats-light.svg">
-    <img alt="GitHub stats, including total commits" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/stats-light.svg" width="400">
+    <img alt="GitHub stats, including total commits" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/stats-light.svg" width="400" align="top">
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/langs-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/langs-light.svg">
-    <img alt="Most used languages" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/langs-light.svg" width="400">
+    <img alt="Most used languages" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/langs-light.svg" width="400" align="top">
   </picture>
 </p>
 
@@ -84,12 +84,12 @@ Coursework reports: [Applied Computational Intelligence](https://github.com/gabr
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/streak-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/streak-light.svg">
-    <img alt="Contribution streak" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/streak-light.svg" width="335">
+    <img alt="Contribution streak" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/streak-light.svg" width="335" align="top">
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/contributions-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/contributions-light.svg">
-    <img alt="Contributions over the last year" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/contributions-light.svg" width="470">
+    <img alt="Contributions over the last year" src="https://raw.githubusercontent.com/gabrimoreira/gabrimoreira/output/contributions-light.svg" width="470" align="top">
   </picture>
 </p>
 
