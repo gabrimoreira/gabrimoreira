@@ -55,7 +55,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
         with:
           card: stats
-          options: show_icons=true&include_all_commits=true&hide=stars,issues&show=prs_merged&custom_title=GitHub%20stats&border_radius=8&bg_color=f4f6f3&border_color=d5dcda&title_color=b8236e&icon_color=1b2a41&text_color=1b2a41&ring_color=b8236e
+          options: show_icons=true&include_all_commits=true&hide=stars,issues&show=prs_merged&card_width=495&custom_title=GitHub%20stats&border_radius=8&bg_color=f4f6f3&border_color=d5dcda&title_color=b8236e&icon_color=1b2a41&text_color=1b2a41&ring_color=b8236e
           path: dist/stats-light.svg
           token: ${{ env.STATS_TOKEN }}
           fail_on_error: "true"
@@ -66,7 +66,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
         with:
           card: stats
-          options: show_icons=true&include_all_commits=true&hide=stars,issues&show=prs_merged&custom_title=GitHub%20stats&border_radius=8&bg_color=14243a&border_color=2a3d57&title_color=f05aa6&icon_color=8cc8eb&text_color=e4ecef&ring_color=f05aa6
+          options: show_icons=true&include_all_commits=true&hide=stars,issues&show=prs_merged&card_width=495&custom_title=GitHub%20stats&border_radius=8&bg_color=14243a&border_color=2a3d57&title_color=f05aa6&icon_color=8cc8eb&text_color=e4ecef&ring_color=f05aa6
           path: dist/stats-dark.svg
           token: ${{ env.STATS_TOKEN }}
           fail_on_error: "true"
